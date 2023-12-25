@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Cavalier extends Piece{
     Etat etat;
+    final String name = "Cavalier";
 
     public Etat getEtat() {
         return etat;
@@ -17,9 +18,13 @@ public class Cavalier extends Piece{
         this.etat = etat;
     }
 
-    public Cavalier(Couleur couleur, int x, int y) {
-        super(couleur, x, y);
+    public Cavalier(Couleur couleur, int y, int x) {
+        super(couleur, y, x);
         this.etat = Etat.VIVANT;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -27,7 +32,7 @@ public class Cavalier extends Piece{
         return null;
     }
 
-    public ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Piece[][] plateau, Piece piece){
+    public ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Piece[][] plateau){
         ArrayList<DeplacementsPossibles> deplacementsPossiblesTab = new ArrayList<>();
 
 

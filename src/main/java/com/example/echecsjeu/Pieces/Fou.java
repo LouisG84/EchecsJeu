@@ -3,12 +3,13 @@ package com.example.echecsjeu.Pieces;
 import com.example.echecsjeu.Jeu.DeplacementsPossibles;
 import com.example.echecsjeu.Pieces.carac.Couleur;
 import com.example.echecsjeu.Pieces.carac.Etat;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class Fou extends Piece{
+
     Etat etat;
+    final String name = "Fou";
 
     public Etat getEtat() {
         return etat;
@@ -18,9 +19,13 @@ public class Fou extends Piece{
         this.etat = etat;
     }
 
-    public Fou(Couleur couleur, int x, int y) {
-        super(couleur, x, y);
+    public Fou(Couleur couleur, int y, int x) {
+        super(couleur, y, x);
         this.etat = Etat.VIVANT;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

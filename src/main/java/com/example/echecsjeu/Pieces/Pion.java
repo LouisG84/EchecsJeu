@@ -7,8 +7,10 @@ import com.example.echecsjeu.Pieces.carac.Etat;
 import java.util.ArrayList;
 
 public class Pion extends Piece{
+
     Etat etat;
     Boolean premierCoup = true;
+    final String name = "Pion";
 
     public Etat getEtat() {
         return etat;
@@ -23,9 +25,13 @@ public class Pion extends Piece{
         return premierCoup;
     }
 
-    public Pion(Couleur couleur, int x, int y) {
-        super(couleur, x, y);
+    public Pion(Couleur couleur, int y, int x) {
+        super(couleur, y, x);
         this.etat = Etat.VIVANT;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

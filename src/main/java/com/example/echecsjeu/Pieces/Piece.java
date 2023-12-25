@@ -2,7 +2,6 @@ package com.example.echecsjeu.Pieces;
 
 import com.example.echecsjeu.Jeu.DeplacementsPossibles;
 import com.example.echecsjeu.Pieces.carac.Couleur;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -11,10 +10,10 @@ public abstract class Piece {
     int y;
     Couleur couleur;
 
-    public Piece(Couleur couleur, int x, int y) {
+    public Piece(Couleur couleur, int y, int x) {
         this.couleur = couleur;
-        this.x = x;
         this.y = y;
+        this.x = x;
     }
 
     public int getX() {
