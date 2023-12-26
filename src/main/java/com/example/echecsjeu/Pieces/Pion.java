@@ -1,6 +1,7 @@
 package com.example.echecsjeu.Pieces;
 
 import com.example.echecsjeu.Jeu.DeplacementsPossibles;
+import com.example.echecsjeu.Jeu.Plateau;
 import com.example.echecsjeu.Pieces.carac.Couleur;
 import com.example.echecsjeu.Pieces.carac.Etat;
 
@@ -35,31 +36,31 @@ public class Pion extends Piece{
     }
 
     @Override
-    public ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Piece[][] plateau){
+    public ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Plateau plateau){
 
         ArrayList<DeplacementsPossibles> deplacementsPossiblesTab = new ArrayList<>();
 
         if(getCouleur().equals(Couleur.BLANC)){
-            if(plateau[y+1][x] == null){
+            if(Plateau.getPlateau(y+1, x) == null){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y+1, x));
-            } else if(getPremierCoup() && plateau[y+2][x] == null){
+            } else if(getPremierCoup() && Plateau.getPlateau(y+2, x)  == null){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y+2, x));
-            } else if(plateau[y+1][x-1].getCouleur().equals(Couleur.NOIR)){
+            } else if(Plateau.getPlateau(y+1, x-1) .getCouleur().equals(Couleur.NOIR)){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y+1, x-1));
                 //TODO mange();
-            } else if(plateau[y+1][x+1].getCouleur().equals(Couleur.NOIR)){
+            } else if(Plateau.getPlateau(y+1, x+1) .getCouleur().equals(Couleur.NOIR)){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y+1, x+1));
                 //TODO mange();
             }
         } else if (getCouleur().equals(Couleur.NOIR)) {
-            if(plateau[y-1][x] == null){
+            if(Plateau.getPlateau(y-1, x)  == null){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y-1, x));
-            } else if(getPremierCoup() && plateau[y-2][x] == null){
+            } else if(getPremierCoup() && Plateau.getPlateau(y-2, x)  == null){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y-2, x));
-            } else if(plateau[y-1][x-1].getCouleur().equals(Couleur.BLANC) ){
+            } else if(Plateau.getPlateau(y-1, x-1) .getCouleur().equals(Couleur.BLANC) ){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y-1, x-1));
                 //TODO mange();
-            } else if(plateau[y-1][x+1].getCouleur().equals(Couleur.BLANC)){
+            } else if(Plateau.getPlateau(y-1, x+1) .getCouleur().equals(Couleur.BLANC)){
                 deplacementsPossiblesTab.add(new DeplacementsPossibles(y-1, x+1));
                 //TODO mange();
             }

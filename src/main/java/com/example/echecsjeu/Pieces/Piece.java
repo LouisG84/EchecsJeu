@@ -1,6 +1,7 @@
 package com.example.echecsjeu.Pieces;
 
 import com.example.echecsjeu.Jeu.DeplacementsPossibles;
+import com.example.echecsjeu.Jeu.Plateau;
 import com.example.echecsjeu.Pieces.carac.Couleur;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public abstract class Piece {
         this.couleur = couleur;
     }
 
-    public abstract ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Piece[][] plateau);
+    public abstract ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Plateau plateau);
 
     public abstract Boolean getPremierCoup();
 

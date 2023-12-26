@@ -1,6 +1,7 @@
 package com.example.echecsjeu.Pieces;
 
 import com.example.echecsjeu.Jeu.DeplacementsPossibles;
+import com.example.echecsjeu.Jeu.Plateau;
 import com.example.echecsjeu.Pieces.carac.Couleur;
 import com.example.echecsjeu.Pieces.carac.Etat;
 
@@ -34,63 +35,25 @@ public class Tour extends Piece{
     }
 
     @Override
-    public ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Piece[][] plateau){
+    public ArrayList<DeplacementsPossibles> getDeplacementsPossibles(int x, int y, Plateau plateau){
         ArrayList<DeplacementsPossibles> deplacementsPossiblesTab = new ArrayList<>();
+        Couleur couleurPiece = Plateau.getPlateau(y,x).getCouleur();
 
-        Couleur couleurPiece = plateau[y][x].getCouleur();
+        int[] dx = { -1, 0, 0, 1 };
+        int[] dy = { 0, -1, 1, 0 };
 
-        //Déplacements droite
-        for(int i = x; i < 8; i++){
-            if(plateau[y][i] == null){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(y, i));
-            } else if(plateau[y][i].getCouleur() != couleurPiece){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(y, i));
-                //TODO mange();
-                break;
-            } else {
-                break;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 1; j < 8; j++) {
+                int nx = x + j * dx[i];
+                int ny = y + j * dy[i];
+
+                if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
+                    if(Plateau.getPlateau(ny,nx) == null || Plateau.getPlateau(ny,nx).getCouleur() != couleurPiece){
+                        deplacementsPossiblesTab.add(new DeplacementsPossibles(ny, nx));
+                    }
+                }
             }
         }
-
-        //Déplacements gauche
-        for(int i = x; i >= 0; i--){
-            if(plateau[y][i] == null){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(y, i));
-            } else if(plateau[y][i].getCouleur() != couleurPiece){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(y, i));
-                //TODO mange();
-                break;
-            } else {
-                break;
-            }
-        }
-
-        //Déplacements haut
-        for(int i = y; i < 8; i++){
-            if(plateau[i][x] == null){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(i, x));
-            } else if(plateau[i][x].getCouleur() != couleurPiece){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(i, x));
-                //TODO mange();
-                break;
-            } else {
-                break;
-            }
-        }
-
-        //Déplacements bas
-        for(int i = y; i >= 0; i--){
-            if(plateau[i][x] == null){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(i, x));
-            } else if(plateau[i][x].getCouleur() != couleurPiece){
-                deplacementsPossiblesTab.add(new DeplacementsPossibles(i, x));
-                //TODO mange();
-                break;
-            } else {
-                break;
-            }
-        }
-
         return deplacementsPossiblesTab;
     }
 }

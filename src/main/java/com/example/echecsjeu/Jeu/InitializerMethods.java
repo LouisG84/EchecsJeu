@@ -4,8 +4,9 @@ import com.example.echecsjeu.Pieces.*;
 import com.example.echecsjeu.Pieces.carac.Couleur;
 
 public class InitializerMethods {
-    static public Plateau plateau = new Plateau();
-    
+    //static public Plateau plateau = new Plateau();
+    public static com.example.echecsjeu.Jeu.Plateau plateau;
+
     /*
                             (y,x)
         [ (0,0)  (0,1)  (0,2)  (0,3)  (0,4)  (0,5)  (0,6)  (0,7) ]
@@ -18,7 +19,12 @@ public class InitializerMethods {
         [ (7,0)  (7,1)  (7,2)  (7,3)  (7,4)  (7,5)  (7,6)  (7,7) ]
      */
 
-    public static void initPieces() {
+    public static Plateau getPlateau() {
+        return plateau;
+    }
+
+    public static Plateau initPieces() {
+        plateau = new Plateau();
         // Ajout des Tours
         Plateau.setPlateau(0, 0, new Tour(Couleur.BLANC, 0, 0));
         Plateau.setPlateau(7, 0, new Tour(Couleur.BLANC, 7, 0));
@@ -57,5 +63,7 @@ public class InitializerMethods {
 
         System.out.println("Initialisation des pièces terminée");
         System.out.println(Plateau.getPlateau(0, 0));
+
+        return plateau;
     }
 }
